@@ -44,6 +44,7 @@ public class SecurityConfig {
 
                     http.anyRequest().authenticated();
                 })
+                .cors(Customizer.withDefaults())
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
     }
