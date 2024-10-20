@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 0
 
 spring:
   servlet:
@@ -8,15 +8,16 @@ spring:
       max-request-size: 15MB
   application:
     name: rapidmotos-photo-api
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/security_db
-    username: user
-    password: pass
   jpa:
+    database: POSTGRESQL
+    show-sql: true
     hibernate:
-      ddl-auto: create
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driverClassName: org.postgresql.Driver
 
 
