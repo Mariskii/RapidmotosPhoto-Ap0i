@@ -5,5 +5,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({"message", "accessToken"})
 public record AuthResponse(String status,
                            String message,
+                           String userName,
                            String accessToken) {
 }

@@ -6,8 +6,6 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
-import com.rapidmotos.rapidmotos.Users.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,7 +39,6 @@ public class JwtUtils {
                 .withSubject(username) //a quien se le genera el token
                 .withClaim("authorities",authorities)
                 .withIssuedAt(new Date()) //Fecha en la que se genera el token
-                .withExpiresAt(new Date(System.currentTimeMillis() + 60000L * 60 * 24 * 31)) //Cuando expira
                 .withNotBefore(new Date(System.currentTimeMillis())) //A partir de cuando va a ser valido el token
                 .sign(Algorithm.HMAC256(privateKey));
     }
